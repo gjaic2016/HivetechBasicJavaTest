@@ -1,7 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -10,10 +8,7 @@ public class Main {
         int selection;
         Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-
-        VehicleManagerImpl vehicleManagerImpl = new VehicleManagerImpl();
-
+        VehicleManagerImpl newVehicleManagerImpl = new VehicleManagerImpl();
 
         do {
             System.out.println("Vehicle Fleet Management System");
@@ -32,12 +27,12 @@ public class Main {
                     System.out.println("Enter 'car' or 'truck': ");
                     String choice = scanner.nextLine();
                     if (choice.equals("car")) {
-                        Vehicle newCar = vehicleManagerImpl.addVehicle(scanner);
-                        vehicles.add(newCar);
+                        Car newCar = new Car();
+                        newVehicleManagerImpl.addVehicle(newCar);
                         break;
                     } else if (choice.equals("truck")) {
-//                        Vehicle newTruck = vehicleManagerImpl.addVehicle(scanner);
-//                        vehicles.add(newTruck);
+                        Truck newTruck = new Truck();
+                        newVehicleManagerImpl.addVehicle(newTruck);
                         break;
                     } else {
                         System.out.println("Wrong expression. Try again!");
@@ -50,45 +45,11 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    if (vehicles.isEmpty()) {
-                        System.out.println("There is no vehicles currently.");
-                        break;
-                    } else {
-                        vehicleManagerImpl.printAllVehicle(vehicles);
-                        break;
-                    }
+                    newVehicleManagerImpl.printAllVehicle();
+                    break;
                 }
                 case 4: {
-                    System.out.println("Delete vehicle");
-                    System.out.println("Enter VIN of vehicle to delete: ");
-
-                    String vinNumberToDelete = scanner.nextLine();
-
-                    Iterator<Vehicle> iterator = vehicles.iterator();
-                    while (iterator.hasNext()) {
-                        Vehicle element = iterator.next();
-                        if (element.getVin().equals(vinNumberToDelete)) {
-                            iterator.remove();
-                            System.out.println("Vehicle with VIN " + element.getVin() + " deleted successfully.");
-                        }
-                    }
-//                      nes sere
-//                    for (Vehicle oneVehicle : vehicles) {
-//                        String getVinNmbr = oneVehicle.getVin();
-//                        if (vinNumberToDelete.isEmpty()) {
-//                            System.out.println("There is no VIN number. Try again.");
-//                        } else if (vinNumberToDelete.equals(getVinNmbr)) {
-//                            vehicles.remove(oneVehicle);
-//
-//
-//                            //ovo radi
-////                            vehicles.removeIf(t -> t.getVin().equals(vinNumberToDelete));
-
-//                            System.out.println("Vehicle with VIN " + getVinNmbr + " deleted successfully.");
-//                        } else {
-//                            System.out.println("There is no such vehicle. Try again");
-//                        }
-//                    }
+                    newVehicleManagerImpl.removeVehicle();
                     break;
                 }
                 case 5: {
@@ -97,15 +58,15 @@ public class Main {
             }
         } while (selection != 5);
 
+
+//        test data
 //        Car car1= new Car("Toyota","Yaris","2222","23434","blue", "diesel", "4", "hatchback");
 //        Car car2= new Car("BMW","E55","2222","23434","blue", "petrol", "5", "minivan");
 //        Car car3= new Car("Skoda","Fabia","2222","23434","blue", "petrol", "4", "limosine");
 //        Truck truck = new Truck("Audi","000","2101","23123434","red", "diesel", "4000" );
-//
 //        vehicles.add(car1);
 //        vehicles.add(car2);
 //        vehicles.add(car3);
 //        vehicles.add(truck);
-
     }
 }

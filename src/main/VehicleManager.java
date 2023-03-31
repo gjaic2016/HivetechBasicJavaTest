@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public interface VehicleManager {
 
-    Vehicle addVehicle();
+    void addVehicle();
 
-    Vehicle addVehicle(Scanner scanner);
+    void addVehicle(Vehicle vehicle);
+
 
     void searchVehicle();
 
