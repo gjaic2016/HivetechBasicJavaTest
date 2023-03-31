@@ -10,11 +10,6 @@ public class VehicleManagerImpl implements VehicleManager {
 
     }
 
-//    public VehicleManagerImpl(ArrayList<Vehicle> vehicles) {
-//        this.vehiclesList = vehicles;
-//    }
-
-
     private ArrayList<Vehicle> vehiclesList = new ArrayList<>();
 
     public ArrayList<Vehicle> getVehicles() {
@@ -38,7 +33,44 @@ public class VehicleManagerImpl implements VehicleManager {
 
     @Override
     public void searchVehicle() {
-
+        //TODO
+        //add inputMismatchException
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How would you like to search for vehicles?");
+        System.out.println("1. Search by make");
+        System.out.println("2. Search by model");
+        System.out.println("Enter number: ");
+        int select = scanner.nextInt();
+        scanner.nextLine();
+        if (select == 1) {
+            System.out.println("Enter vehicle make: ");
+            String searchMake = scanner.nextLine();
+            for (Vehicle oneVehicle : vehiclesList) {
+                if (searchMake.toLowerCase().equals(oneVehicle.getBrand().toLowerCase())) {
+                    System.out.println(oneVehicle.getBrand()
+                            + " " + oneVehicle.getModel()
+                            + ", production year: " + oneVehicle.getProductionYear()
+                            + ", VIN number: " + oneVehicle.getVin()
+                            + ", color: " + oneVehicle.getColor()
+                    );
+                }
+            }
+        } else if (select == 2) {
+            System.out.println("Enter vehicle model: ");
+            String searchModel = scanner.nextLine();
+            for (Vehicle oneVehicle : vehiclesList) {
+                if (searchModel.toLowerCase().equals(oneVehicle.getModel().toLowerCase())) {
+                    System.out.println(oneVehicle.getBrand()
+                            + " " + oneVehicle.getModel()
+                            + ", production year: " + oneVehicle.getProductionYear()
+                            + ", VIN number: " + oneVehicle.getVin()
+                            + ", color: " + oneVehicle.getColor()
+                    );
+                }
+            }
+        } else {
+            System.out.println("Wrong selection, please try again.");
+        }
     }
 
     @Override
@@ -50,20 +82,28 @@ public class VehicleManagerImpl implements VehicleManager {
             System.out.println("All vehicles in the fleet: ");
             for (Vehicle oneVehicle : vehiclesList) {
                 if (oneVehicle instanceof Car) {
-                    System.out.println("Car {make=" + oneVehicle.getBrand() + ", model=" + oneVehicle.getModel());
+                    System.out.println("Car => make: " + oneVehicle.getBrand()
+                            + ", model: " + oneVehicle.getModel()
+                            + ", production year: " + oneVehicle.getProductionYear()
+                            + ", VIN number: " + oneVehicle.getVin()
+                            + ", color: " + oneVehicle.getColor()
+                            + ", fuel type: " + oneVehicle.getFuelType()
+                            + ", door number: " + ((Car) oneVehicle).getDoorNumber()
+                            + ", body type: " + ((Car) oneVehicle).getBodyType()
+                    );
                 } else {
-                    System.out.println("Truck {make=" + oneVehicle.getBrand() + ", model=" + oneVehicle.getModel());
+                    System.out.println("Truck => make=" + oneVehicle.getBrand()
+                            + ", model: " + oneVehicle.getModel()
+                            + ", production year: " + oneVehicle.getProductionYear()
+                            + ", VIN number: " + oneVehicle.getVin()
+                            + ", color: " + oneVehicle.getColor()
+                            + ", fuel type: " + oneVehicle.getFuelType()
+                            + ", carry capacity: " + ((Truck) oneVehicle).getCarryCapacity()
+                    );
                 }
             }
         }
     }
-
-//    @Override
-//    public void printAllVehicle(ArrayList<Vehicle>  vehicles) {
-//        for (Vehicle oneVehicle : vehicles) {
-//            System.out.println(oneVehicle.getBrand() + " " + oneVehicle.getModel());
-//        }
-//    }
 
     @Override
     public void removeVehicle() {
