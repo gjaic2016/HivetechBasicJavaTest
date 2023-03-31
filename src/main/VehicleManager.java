@@ -1,7 +1,7 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public interface VehicleManager {
 
@@ -14,9 +14,6 @@ public interface VehicleManager {
 
     void printAllVehicle();
 
-    default void printAllVehicle(ArrayList<Vehicle> vehicles) {
-
-    }
 
     void removeVehicle();
 
