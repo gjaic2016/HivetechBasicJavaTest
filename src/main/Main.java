@@ -79,29 +79,17 @@ public class Main {
      * @throws DuplicateVehicleException Throws exception in when adding new vehicle with identical VIN number
      */
     static void testData(VehicleManagerImpl newVehicleManagerImpl) throws DuplicateVehicleException {
-        Car car1 = new Car("Toyota", "Yaris", "1999", "1111", "blue", "diesel", "5", "hatchback");
-        Car car2 = new Car("BMW", "E55", "2000", "2222", "blue", "petrol", "5", "minivan");
-        Car car3 = new Car("Skoda", "Fabia", "2001", "3333", "blue", "petrol", "4", "limosine");
-        Car car4 = new Car("Skoda", "Octavia", "2005", "4444", "silver", "petrol", "4", "limosine");
-        Car car5 = new Car("Audi", "A3", "2005", "5555", "black", "petrol", "5", "hatchback");
-        Car car6 = new Car("Skoda", "Octavia", "2002", "9999", "white", "petrol", "5", "hatchback");
-        Car car7 = new Car("Yugo", "45", "1977", "9876", "blue", "petrol", "3", "hatchback");
-        Car car8 = new Car("Zastava", "750", "1955", "4321", "green", "petrol", "2", "hatchback");
-        Truck truck1 = new Truck("Audi", "Q3", "2010", "6666", "yellow", "diesel", "4100");
-        Truck truck2 = new Truck("GMC", "Sierra", "2001", "7777", "black", "diesel", "3250");
-        Truck truck3 = new Truck("GMC", "Denali", "2003", "8888", "red", "diesel", "3440");
-        newVehicleManagerImpl.addVehicle(car1);
-        newVehicleManagerImpl.addVehicle(car2);
-        newVehicleManagerImpl.addVehicle(car3);
-        newVehicleManagerImpl.addVehicle(car4);
-        newVehicleManagerImpl.addVehicle(car5);
-        newVehicleManagerImpl.addVehicle(car6);
-        newVehicleManagerImpl.addVehicle(car7);
-        newVehicleManagerImpl.addVehicle(car8);
-        newVehicleManagerImpl.addVehicle(truck1);
-        newVehicleManagerImpl.addVehicle(truck2);
-        newVehicleManagerImpl.addVehicle(truck3);
-
+        newVehicleManagerImpl.addVehicle(new Car("Toyota", "Yaris", "1999", "1111", "blue", "diesel", "5", "hatchback"));
+        newVehicleManagerImpl.addVehicle(new Car("BMW", "E55", "2000", "2222", "blue", "petrol", "5", "minivan"));
+        newVehicleManagerImpl.addVehicle(new Car("Skoda", "Fabia", "2001", "3333", "blue", "petrol", "4", "limosine"));
+        newVehicleManagerImpl.addVehicle(new Car("Skoda", "Octavia", "2005", "4444", "silver", "petrol", "4", "limosine"));
+        newVehicleManagerImpl.addVehicle(new Car("Audi", "A3", "2005", "5555", "black", "petrol", "5", "hatchback"));
+        newVehicleManagerImpl.addVehicle(new Car("Skoda", "Octavia", "2002", "9999", "white", "petrol", "5", "hatchback"));
+        newVehicleManagerImpl.addVehicle(new Car("Yugo", "45", "1977", "9876", "blue", "petrol", "3", "hatchback"));
+        newVehicleManagerImpl.addVehicle(new Car("Zastava", "750", "1955", "4321", "green", "petrol", "2", "hatchback"));
+        newVehicleManagerImpl.addVehicle(new Truck("Audi", "Q3", "2010", "6666", "yellow", "diesel", "4100"));
+        newVehicleManagerImpl.addVehicle(new Truck("GMC", "Sierra", "2001", "7777", "black", "diesel", "3250"));
+        newVehicleManagerImpl.addVehicle(new Truck("GMC", "Denali", "2003", "8888", "red", "diesel", "3440"));
     }
 
 }

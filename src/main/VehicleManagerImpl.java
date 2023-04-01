@@ -99,7 +99,7 @@ public class VehicleManagerImpl implements VehicleManager {
                             + ", body type: " + ((Car) oneVehicle).getBodyType()
                     );
                 } else {
-                    System.out.println("Truck => make=" + oneVehicle.getBrand()
+                    System.out.println("Truck => make: " + oneVehicle.getBrand()
                             + ", model: " + oneVehicle.getModel()
                             + ", production year: " + oneVehicle.getProductionYear()
                             + ", VIN number: " + oneVehicle.getVin()
