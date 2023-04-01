@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * <h2>VehicleManagerImpl class</h2>
+ *
+ * Contains methods for managing vehicles such as: adding vehicles,
+ * searching for vehicles, listing all vehicles and removing vehicles from fleet.
+ *
+ * VehicleManagerImpl class implements VehicleManager interface
+ *
+ */
 public class VehicleManagerImpl implements VehicleManager {
 
     public VehicleManagerImpl() {
@@ -25,6 +34,16 @@ public class VehicleManagerImpl implements VehicleManager {
 
     }
 
+    /**
+     * <h3>addVehicle method</h3>
+     *
+     * Method adds already created vehicles to the fleet
+     * If contains duplicate vehicle by VIN number, raises error with DuplicateVehicleException
+     *
+     * @param vehicle
+     * @throws DuplicateVehicleException
+     *
+     */
     @Override
     public void addVehicle(Vehicle vehicle) throws DuplicateVehicleException {
         for (Vehicle oneVehicle : vehiclesList) {
@@ -38,6 +57,12 @@ public class VehicleManagerImpl implements VehicleManager {
     }
 
 
+    /**
+     * <h3>searchVehicle method</h3>
+     *
+     * Method searches vehicles in the fleet by make or model
+     *
+     */
     @Override
     public void searchVehicle() {
 
@@ -80,6 +105,12 @@ public class VehicleManagerImpl implements VehicleManager {
         }
     }
 
+    /**
+     * <h3>printAllVehicle method</h3>
+     *
+     * Method prints all existing vehicles in the fleet
+     *
+     */
     @Override
     public void printAllVehicle() {
 
@@ -112,6 +143,15 @@ public class VehicleManagerImpl implements VehicleManager {
         }
     }
 
+    /**
+     * <h3>removeVehicle method</h3>
+     *
+     * Method removes vehicle from the fleet by VIN number
+     * If there is no vehicle by given VIN number, raises error with NoSuchVehicleException
+     *
+     * @throws NoSuchVehicleException
+     *
+     */
     @Override
     public void removeVehicle() throws NoSuchVehicleException {
         System.out.println("Delete vehicle");

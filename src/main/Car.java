@@ -3,6 +3,13 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ * <h2>Car class</h2>
+ *
+ * Sub class created from extended Vehicle class
+ * Type specific parameters: doorNumber, bodyType
+ *
+ */
 public class Car extends Vehicle {
 
     private String doorNumber;

@@ -2,6 +2,13 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ * <h2>Truck class</h2>
+ *
+ * Sub class created from extended Vehicle class
+ * Type specific parameters: carryCapacity
+ *
+ */
 public class Truck extends Vehicle {
 
     private String carryCapacity;

@@ -1,7 +1,13 @@
 package main;
 
-import java.util.ArrayList;
 
+/**
+ * <h2>Vehicle abstract class</h2>
+ *
+ * Contains boilerplate model for all types of created vehicles (car, truck, ...)
+ * Type specific parameters: brand, model, productionYear, vin, color, fuelType
+ *
+ */
 public abstract class Vehicle {
 
     private String brand;

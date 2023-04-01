@@ -6,6 +6,16 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * <h1>Vehicle Manager</h1>
+ * <h2>Main class</h2>
+ *
+ * Application for managing vehicles
+ *
+ * @Author Goran Jaic
+ * @version 1.0
+ *
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -59,6 +69,12 @@ public class Main {
 
     }
 
+    /**
+     * <h3>menu method</h3>
+     *
+     * Method prints menu information
+     *
+     */
     static void menu() {
         System.out.println(" ");
         System.out.println("Vehicle Fleet Management System");
@@ -71,6 +87,16 @@ public class Main {
         System.out.println("5. Quit");
     }
 
+    /**
+     * <h3>createVehicle method</h3>
+     *
+     * Method creates vehicles car or truck based on users input selection
+     *
+     * @param newVehicleManagerImpl
+     * @param scanner
+     * @param LOGGER
+     *
+     */
     static void createVehicle(VehicleManagerImpl newVehicleManagerImpl, Scanner scanner, Logger LOGGER) {
         try {
             System.out.println("Enter 'car' or 'truck': ");
@@ -95,6 +121,8 @@ public class Main {
 
 
     /**
+     * <h3>testData method</h3>
+     *
      * Method fills vehicles data for testing purposes
      *
      * @param newVehicleManagerImpl test vehicles for Vehicle Manager
