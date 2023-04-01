@@ -1,13 +1,11 @@
 package main;
 
-import java.util.ArrayList;
-
 
 public interface VehicleManager {
 
     void addVehicle();
 
-    void addVehicle(Vehicle vehicle);
+    void addVehicle(Vehicle vehicle) throws DuplicateVehicleException;
 
 
     void searchVehicle();
@@ -15,6 +13,6 @@ public interface VehicleManager {
     void printAllVehicle();
 
 
-    void removeVehicle();
+    void removeVehicle() throws NoSuchVehicleException;
 
 }

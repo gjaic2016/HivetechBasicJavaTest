@@ -10,7 +10,11 @@ public class Main {
 
         VehicleManagerImpl newVehicleManagerImpl = new VehicleManagerImpl();
 
-        testData(newVehicleManagerImpl);
+        try {
+            testData(newVehicleManagerImpl);
+        } catch (DuplicateVehicleException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
         do {
             menu();
@@ -21,7 +25,13 @@ public class Main {
                 case 1 -> createVehicle(newVehicleManagerImpl, scanner);
                 case 2 -> newVehicleManagerImpl.searchVehicle();
                 case 3 -> newVehicleManagerImpl.printAllVehicle();
-                case 4 -> newVehicleManagerImpl.removeVehicle();
+                case 4 -> {
+                    try {
+                        newVehicleManagerImpl.removeVehicle();
+                    } catch (NoSuchVehicleException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
                 case 5 -> System.out.println("Goodbye");
             }
         } while (selection != 5);
@@ -41,23 +51,34 @@ public class Main {
     }
 
     static void createVehicle(VehicleManagerImpl newVehicleManagerImpl, Scanner scanner) {
-        System.out.println("Enter 'car' or 'truck': ");
-        String choice = scanner.nextLine();
-        if (choice.equals("car")) {
-            Car newCar = new Car();
-            newVehicleManagerImpl.addVehicle(newCar);
+        try {
+            System.out.println("Enter 'car' or 'truck': ");
+            String choice = scanner.nextLine();
+            if (choice.equals("car")) {
+                Car newCar = new Car();
+                newVehicleManagerImpl.addVehicle(newCar);
 
-        } else if (choice.equals("truck")) {
-            Truck newTruck = new Truck();
-            newVehicleManagerImpl.addVehicle(newTruck);
+            } else if (choice.equals("truck")) {
+                Truck newTruck = new Truck();
+                newVehicleManagerImpl.addVehicle(newTruck);
 
-        } else {
-            System.out.println("Wrong expression. Try again!");
+            } else {
+                System.out.println("Wrong expression. Try again!");
 
+            }
+        } catch (DuplicateVehicleException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
-    static void testData(VehicleManagerImpl newVehicleManagerImpl) {
+
+    /**
+     * Method fills vehicles data for testing purposes
+     *
+     * @param newVehicleManagerImpl test vehicles for Vehicle Manager
+     * @throws DuplicateVehicleException Throws exception in when adding new vehicle with identical VIN number
+     */
+    static void testData(VehicleManagerImpl newVehicleManagerImpl) throws DuplicateVehicleException {
         Car car1 = new Car("Toyota", "Yaris", "1999", "1111", "blue", "diesel", "5", "hatchback");
         Car car2 = new Car("BMW", "E55", "2000", "2222", "blue", "petrol", "5", "minivan");
         Car car3 = new Car("Skoda", "Fabia", "2001", "3333", "blue", "petrol", "4", "limosine");

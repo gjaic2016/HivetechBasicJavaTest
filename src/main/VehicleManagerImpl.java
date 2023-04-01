@@ -26,14 +26,21 @@ public class VehicleManagerImpl implements VehicleManager {
     }
 
     @Override
-    public void addVehicle(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle) throws DuplicateVehicleException {
+        for (Vehicle oneVehicle : vehiclesList) {
+            if (vehicle.getVin().equals(oneVehicle.getVin()))
+                throw new DuplicateVehicleException("Vehicle with than VIN already exists: "
+                        + oneVehicle.getBrand() + ", "
+                        + oneVehicle.getModel() + ", "
+                        + oneVehicle.getVin());
+        }
         vehiclesList.add(vehicle);
     }
 
 
     @Override
     public void searchVehicle() {
-        //TODO
+
         //add inputMismatchException
         Scanner scanner = new Scanner(System.in);
         System.out.println("How would you like to search for vehicles?");
@@ -46,7 +53,7 @@ public class VehicleManagerImpl implements VehicleManager {
             System.out.println("Enter vehicle make: ");
             String searchMake = scanner.nextLine();
             for (Vehicle oneVehicle : vehiclesList) {
-                if (searchMake.toLowerCase().equals(oneVehicle.getBrand().toLowerCase())) {
+                if (searchMake.equalsIgnoreCase(oneVehicle.getBrand())) {
                     System.out.println(oneVehicle.getBrand()
                             + " " + oneVehicle.getModel()
                             + ", production year: " + oneVehicle.getProductionYear()
@@ -59,7 +66,7 @@ public class VehicleManagerImpl implements VehicleManager {
             System.out.println("Enter vehicle model: ");
             String searchModel = scanner.nextLine();
             for (Vehicle oneVehicle : vehiclesList) {
-                if (searchModel.toLowerCase().equals(oneVehicle.getModel().toLowerCase())) {
+                if (searchModel.equalsIgnoreCase(oneVehicle.getModel())) {
                     System.out.println(oneVehicle.getBrand()
                             + " " + oneVehicle.getModel()
                             + ", production year: " + oneVehicle.getProductionYear()
@@ -106,7 +113,7 @@ public class VehicleManagerImpl implements VehicleManager {
     }
 
     @Override
-    public void removeVehicle() {
+    public void removeVehicle() throws NoSuchVehicleException {
         System.out.println("Delete vehicle");
         System.out.println("Enter VIN of vehicle to delete: ");
         Scanner scanner = new Scanner(System.in);
@@ -117,10 +124,13 @@ public class VehicleManagerImpl implements VehicleManager {
             Vehicle element = iterator.next();
             if (element.getVin().equals(vinNumberToDelete)) {
                 iterator.remove();
-                System.out.println("Vehicle with VIN " + element.getVin() + " deleted successfully.");
+                System.out.println("Vehicle" + element.getBrand() + ", " + element.getModel()
+                        + "," + element.getProductionYear() + " with VIN " + element.getVin() + " deleted successfully.");
+            } else {
+                throw new NoSuchVehicleException("There is no such vehicle to delete!.");
             }
         }
-//        vehicles.removeIf(t -> t.getVin().equals(vinNumberToDelete));
+
     }
 
 }
