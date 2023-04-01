@@ -1,0 +1,12 @@
+tra 02, 2023 12:27:09 AM main.Main main
+INFO: Manager started
+tra 02, 2023 12:29:53 AM main.Main main
+INFO: Manager started
+tra 02, 2023 12:30:26 AM main.Main createVehicle
+WARNING: Duplicate vehicles found.
+tra 02, 2023 12:30:55 AM main.Main main
+WARNING: Vehicle not found.
+tra 02, 2023 12:31:44 AM main.Main main
+INFO: Manager started
+tra 02, 2023 12:31:48 AM main.Main main
+INFO: Manager closed.

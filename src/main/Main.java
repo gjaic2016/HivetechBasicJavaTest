@@ -1,6 +1,10 @@
 package main;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,10 +14,23 @@ public class Main {
 
         VehicleManagerImpl newVehicleManagerImpl = new VehicleManagerImpl();
 
+        Logger LOGGER = Logger.getLogger(Main.class.getName());
+        try {
+            FileHandler fileHandler = new FileHandler("log.txt", true);
+            LOGGER.addHandler(fileHandler);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler.setFormatter(formatter);
+        } catch (IOException e) {
+            LOGGER.warning("Log file not created: " + e.getMessage());
+        }
+
+        LOGGER.info("Manager started");
+
         try {
             testData(newVehicleManagerImpl);
         } catch (DuplicateVehicleException e) {
             System.out.println("Error: " + e.getMessage());
+            LOGGER.warning("Duplicate vehicles found.");
         }
 
         do {
@@ -22,7 +39,7 @@ public class Main {
             selection = scanner.nextInt();
             scanner.nextLine();
             switch (selection) {
-                case 1 -> createVehicle(newVehicleManagerImpl, scanner);
+                case 1 -> createVehicle(newVehicleManagerImpl, scanner, LOGGER);
                 case 2 -> newVehicleManagerImpl.searchVehicle();
                 case 3 -> newVehicleManagerImpl.printAllVehicle();
                 case 4 -> {
@@ -30,9 +47,13 @@ public class Main {
                         newVehicleManagerImpl.removeVehicle();
                     } catch (NoSuchVehicleException e) {
                         System.out.println("Error: " + e.getMessage());
+                        LOGGER.warning("Vehicle not found.");
                     }
                 }
-                case 5 -> System.out.println("Goodbye");
+                case 5 -> {
+                    System.out.println("Goodbye");
+                    LOGGER.info("Manager closed.");
+                }
             }
         } while (selection != 5);
 
@@ -50,7 +71,7 @@ public class Main {
         System.out.println("5. Quit");
     }
 
-    static void createVehicle(VehicleManagerImpl newVehicleManagerImpl, Scanner scanner) {
+    static void createVehicle(VehicleManagerImpl newVehicleManagerImpl, Scanner scanner, Logger LOGGER) {
         try {
             System.out.println("Enter 'car' or 'truck': ");
             String choice = scanner.nextLine();
@@ -68,6 +89,7 @@ public class Main {
             }
         } catch (DuplicateVehicleException e) {
             System.out.println("Error: " + e.getMessage());
+            LOGGER.warning("Duplicate vehicles found.");
         }
     }
 
