@@ -10,3 +10,21 @@ tra 02, 2023 12:31:44 AM main.Main main
 INFO: Manager started
 tra 02, 2023 12:31:48 AM main.Main main
 INFO: Manager closed.
+tra 02, 2023 9:22:50 PM main.Main main
+INFO: Manager started
+tra 02, 2023 9:29:53 PM main.Main main
+INFO: Manager started
+tra 02, 2023 9:29:59 PM main.Main main
+WARNING: Wrong input, please enter number.
+tra 02, 2023 9:31:21 PM main.Main main
+INFO: Manager closed.
+tra 02, 2023 9:35:44 PM main.Main main
+INFO: Manager started
+tra 02, 2023 9:35:48 PM main.Main main
+WARNING: Wrong input, please enter number.
+tra 02, 2023 9:36:13 PM main.Main main
+INFO: Manager closed.
+tra 02, 2023 9:38:59 PM main.Main main
+INFO: Manager started
+tra 02, 2023 9:39:15 PM main.Main main
+INFO: Manager closed.

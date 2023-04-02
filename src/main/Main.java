@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -9,12 +10,11 @@ import java.util.logging.SimpleFormatter;
 /**
  * <h1>Vehicle Manager</h1>
  * <h2>Main class</h2>
- *
+ * <p>
  * Application for managing vehicles
  *
- * @Author Goran Jaic
+ * @author Goran Jaic
  * @version 1.0
- *
  */
 public class Main {
     public static void main(String[] args) {
@@ -50,7 +50,14 @@ public class Main {
             scanner.nextLine();
             switch (selection) {
                 case 1 -> createVehicle(newVehicleManagerImpl, scanner, LOGGER);
-                case 2 -> newVehicleManagerImpl.searchVehicle();
+                case 2 -> {
+                    try {
+                        newVehicleManagerImpl.searchVehicle();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Error: Wrong input, please enter number." + e.getMessage());
+                        LOGGER.warning("Wrong input, please enter number.");
+                    }
+                }
                 case 3 -> newVehicleManagerImpl.printAllVehicle();
                 case 4 -> {
                     try {
@@ -71,9 +78,8 @@ public class Main {
 
     /**
      * <h3>menu method</h3>
-     *
+     * <p>
      * Method prints menu information
-     *
      */
     static void menu() {
         System.out.println(" ");
@@ -89,13 +95,12 @@ public class Main {
 
     /**
      * <h3>createVehicle method</h3>
-     *
+     * <p>
      * Method creates vehicles car or truck based on users input selection
      *
      * @param newVehicleManagerImpl
      * @param scanner
      * @param LOGGER
-     *
      */
     static void createVehicle(VehicleManagerImpl newVehicleManagerImpl, Scanner scanner, Logger LOGGER) {
         try {
@@ -115,14 +120,14 @@ public class Main {
             }
         } catch (DuplicateVehicleException e) {
             System.out.println("Error: " + e.getMessage());
-            LOGGER.warning("Duplicate vehicles found.");
+            LOGGER.warning("Duplicate vehicles found." + e.getMessage());
         }
     }
 
 
     /**
      * <h3>testData method</h3>
-     *
+     * <p>
      * Method fills vehicles data for testing purposes
      *
      * @param newVehicleManagerImpl test vehicles for Vehicle Manager

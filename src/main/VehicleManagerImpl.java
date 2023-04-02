@@ -64,9 +64,8 @@ public class VehicleManagerImpl implements VehicleManager {
      *
      */
     @Override
-    public void searchVehicle() {
+    public void searchVehicle(){
 
-        //add inputMismatchException
         Scanner scanner = new Scanner(System.in);
         System.out.println("How would you like to search for vehicles?");
         System.out.println("1. Search by make");
@@ -98,6 +97,8 @@ public class VehicleManagerImpl implements VehicleManager {
                             + ", VIN number: " + oneVehicle.getVin()
                             + ", color: " + oneVehicle.getColor()
                     );
+                } else {
+                    System.out.println("No such vehicle.");
                 }
             }
         } else {

@@ -29,6 +29,7 @@ public interface VehicleManager {
      * <h3>searchVehicle method</h3>
      *
      * Method searches vehicles in the fleet by make or model
+     *
      */
     void searchVehicle();
 
